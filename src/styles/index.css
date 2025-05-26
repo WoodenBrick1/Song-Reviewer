@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-mode {
+    background-color: #07010c;
+    color: #ffffff;
+}
