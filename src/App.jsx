@@ -19,7 +19,7 @@ function App() {
     return (  
         <>
             {loggedIn ? <SongReviewer setDarkTheme={setDarkMode} darkMode={darkMode}/> :
-             <Login setLoggedIn={setLoggedIn} setDarkTheme={setDarkMode} darkMode={darkMode}/>}
+             <Login setLoggedIn={setLoggedIn} setDarkMode={setDarkMode} darkMode={darkMode}/>}
         </>
     );
 }

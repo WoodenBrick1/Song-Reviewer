@@ -18,7 +18,7 @@ function SongReviewer(props) {
       case "Profile":
           return <Profile />
       case "Settings":
-          return <Settings />
+          return <Settings setDarkMode={props.setDarkTheme} />
       case "Help":
           return <Help />
       case "About":
@@ -30,7 +30,7 @@ function SongReviewer(props) {
   }
     return (
         <>
-        <TopBar setDarkTheme={props.setDarkTheme} darkMode={props.darkMode} setPage={setPage}/>
+        <TopBar setDarkMode={props.setDarkMode} darkMode={props.darkMode} setPage={setPage}/>
         <main className ={`${props.darkMode ? "dark-mode" : ""}`}>
           {renderPage()}
         </main>
