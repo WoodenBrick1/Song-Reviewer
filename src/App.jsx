@@ -8,6 +8,9 @@ function App() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
 
+    const [username, setUsername] = useState("Unnamed");
+    const [password, setPassword] = useState("");
+
     useEffect(() => {
         if (darkMode) {
             document.body.classList.add('dark-mode');
@@ -18,8 +21,9 @@ function App() {
       
     return (  
         <>
-            {loggedIn ? <SongReviewer setDarkTheme={setDarkMode} darkMode={darkMode}/> :
-             <Login setLoggedIn={setLoggedIn} setDarkMode={setDarkMode} darkMode={darkMode}/>}
+            {loggedIn ? <SongReviewer setDarkMode={setDarkMode} darkMode={darkMode} username={username}/> :
+             <Login setLoggedIn={setLoggedIn} setDarkMode={setDarkMode} darkMode={darkMode} 
+             username = {username} setUsername={setUsername} password={password} setPassword={setPassword}/>}
         </>
     );
 }
