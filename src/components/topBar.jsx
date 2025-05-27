@@ -7,7 +7,7 @@ function TopBar(props) {
         <h1 className="title">Song Reviewer</h1>
         <div className={`menu ${props.darkMode ? "dark-mode" : ""}`}>
             <button>Search</button>
-            <button>Logout</button>
+            <button>Logoutf</button>
             <button>Profile</button>
             <button>Settings</button>
             <button>Help</button>
