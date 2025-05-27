@@ -1,0 +1,30 @@
+
+main {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+main #search-box{
+    position: absolute;
+
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%);
+
+}
+
+#search-box img {
+    width: 13px;
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    opacity: 50%;
+}
+
+#search-box input {
+    border: 2px solid black;
+    width: 250px;
+    height: 27px;
+
+    font-size: 1rem;
+}

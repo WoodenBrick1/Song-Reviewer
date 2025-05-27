@@ -6,7 +6,9 @@ function SongReviewer(props) {
     return (
         <>
         <TopBar setDarkTheme={props.setDarkTheme} darkMode={props.darkMode}/>
-        <Search />
+        <main className ={`${props.darkMode ? "dark-mode" : ""}`}>
+          <Search />
+        </main>
       </>
     )
 }

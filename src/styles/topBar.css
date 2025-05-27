@@ -3,6 +3,7 @@
     --button-height: 20px;
 }
 header {
+    width: 100vw;
     height: 10vh;
     position: relative;
 
@@ -21,7 +22,7 @@ header h1 {
     justify-content: center;
     gap: 40px;
 
-    width: 100vw;
+    width: 100%;
     position: absolute;
     bottom: calc(var(--button-height) * -1);
 
@@ -38,6 +39,8 @@ header.dark-mode {
 
     background-color: rgb(231, 229, 202);
     border: 2px solid #aaaaaa;
+
+    z-index: 3;
 }
 
 .menu button:hover {
