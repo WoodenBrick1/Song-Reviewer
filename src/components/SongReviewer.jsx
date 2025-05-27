@@ -1,4 +1,8 @@
-import Search from "./search"
+import Search from "./Pages/search"
+import Profile from "./Pages/Profile"
+import Settings from "./Pages/Settings"
+import Help from "./Pages/Help"
+import About from "./Pages/About"
 import TopBar from "./topBar"
 import {useState} from "react"
 import "../styles/SongReviewer.css"
@@ -24,13 +28,11 @@ function SongReviewer(props) {
           return <Search />
     }
   }
-
-  console.log(page);
     return (
         <>
         <TopBar setDarkTheme={props.setDarkTheme} darkMode={props.darkMode} setPage={setPage}/>
         <main className ={`${props.darkMode ? "dark-mode" : ""}`}>
-          <Search />
+          {renderPage()}
         </main>
       </>
     )

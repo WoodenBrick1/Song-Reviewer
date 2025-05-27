@@ -1,4 +1,4 @@
-import searchIcon from "../assets/search.png"
+import searchIcon from "../../assets/search.png"
 
 function Search() {
     return (<div id="search-box">
