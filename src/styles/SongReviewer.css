@@ -13,16 +13,38 @@ main #search-box{
 
 }
 
+#search-box button {
+    cursor: pointer;
+
+    width: 40px;
+    height: 33px;
+
+    margin-left: 10px; 
+
+    background-color: beige;
+    border: 2px solid rgb(78, 78, 78);
+    border-radius: 10px;
+}
+
+#search-box button:hover {
+    cursor: pointer;
+
+    width: 40px;
+    height: 33px;
+
+    margin-left: 10px; 
+
+    background-color: rgb(219, 219, 191);
+    border: 2px solid rgb(155, 155, 155);
+}
 #search-box img {
-    width: 13px;
-    position: absolute;
-    top: 6px;
-    right: 10px;
+    width: 16px;
     opacity: 50%;
 }
 
 #search-box input {
     border: 2px solid black;
+    border-radius: 5px;
     width: 250px;
     height: 27px;
 

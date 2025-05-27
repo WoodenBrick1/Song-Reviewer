@@ -1,6 +1,6 @@
 
-function Profile () {
-    return <h1>Profile</h1>
+function Profile (props) {
+    return <h1>{props.username}</h1>
 }
 
 export default Profile;

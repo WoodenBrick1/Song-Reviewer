@@ -8,7 +8,7 @@ function Login(props) {
     const checkLogin = (event) => {
         event.preventDefault(); 
         const formData = new FormData(event.target); 
-        props.setUserName(formData.get('name'));
+        props.setUsername(formData.get('name'));
         props.setPassword(formData.get('password'))
         props.setLoggedIn(true);
     }
