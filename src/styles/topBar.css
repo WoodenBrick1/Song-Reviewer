@@ -5,6 +5,10 @@
 header {
     height: 10vh;
     position: relative;
+
+    background-color: rgb(238, 223, 204);
+
+    border-bottom: 2px solid #aaaaaa;
 }
 header h1 {
     text-align: center;
@@ -21,7 +25,6 @@ header h1 {
     position: absolute;
     bottom: calc(var(--button-height) * -1);
 
-
 }
 header.dark-mode {
     background-color: #0D0D0D;
@@ -32,10 +35,27 @@ header.dark-mode {
 .menu button {
     width: 70px;
     height: var(--button-height);
+
+    background-color: rgb(231, 229, 202);
+    border: 2px solid #aaaaaa;
 }
+
+.menu button:hover {
+    cursor: pointer;
+
+    background-color: rgb(201, 200, 190);
+}
+
 .menu.dark-mode button {
     background-color: rgb(24, 1, 8);
     color: white;
     border: 1px solid #00FF85;
     box-shadow: 2px 2px 2px 1px #00FF85;
+}
+
+.menu.dark-mode button:hover {
+    background-color: rgb(39, 39, 39);
+    border: 1px solid #287751;
+    box-shadow: 2px 2px 2px 1px #287751;
+    
 }
