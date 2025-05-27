@@ -1,14 +1,11 @@
 import Search from "./search"
 import TopBar from "./topBar"
 
+import "../styles/SongReviewer.css"
 function SongReviewer(props) {
     return (
         <>
-        <header>
-          <h1 className="title">Song Reviewer</h1>
-          <TopBar setDarkTheme={props.setDarkTheme} darkMode={props.darkMode}/>
-        </header>
-        
+        <TopBar setDarkTheme={props.setDarkTheme} darkMode={props.darkMode}/>
         <Search />
       </>
     )

@@ -4,6 +4,53 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    gap: 10px;
+}
+
+.login-container h1 {
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.login-container input {
+    width: 200px;
+    height: 23px;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.login-button {
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #000000;
+    color: #ffffff;
+    border: 3px solid #1a1624;
+    border-radius: 10px;
+}
+
+.login-button.dark-mode {
+    background-color: #bbbbbb;
+    color: #000000;
+}
+
+.login-button:hover {
+    background-color: hsl(0, 0%, 21%);
+    border: none;
+}
+
+.login-button.dark-mode:hover {
+    background-color: #000000;
+    color: #ffffff;
 }
 
 
