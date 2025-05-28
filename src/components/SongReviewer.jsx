@@ -13,8 +13,6 @@ function SongReviewer(props) {
     switch (page){
       case "Search": 
           return <Search />
-      case "Logout":
-          return <Logout />
       case "Profile":
           return <Profile username={props.username}/>
       case "Settings":
@@ -23,7 +21,8 @@ function SongReviewer(props) {
           return <Help />
       case "About":
           return <About />
-
+      case "Logout":
+          return props.setLoggedIn(false);
       default:
           return <Search />
     }

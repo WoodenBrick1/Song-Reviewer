@@ -20,7 +20,7 @@ function App() {
       
     return (  
         <>
-            {loggedIn ? <SongReviewer setDarkMode={setDarkMode} darkMode={darkMode} username={username}/> :
+            {loggedIn ? <SongReviewer setDarkMode={setDarkMode} darkMode={darkMode} username={username} setLoggedIn={setLoggedIn}/> :
              <Register setLoggedIn={setLoggedIn} setDarkMode={setDarkMode} darkMode={darkMode} 
              username = {username} setUsername={setUsername} setEmail={setEmail}/>}
         </>
