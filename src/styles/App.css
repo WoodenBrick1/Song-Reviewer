@@ -7,4 +7,7 @@
 :root {
     font-size: 16px;
     font-family: "Inter", "sans-serif";
+
+    --border-color: rgb(252, 237, 106);
+    --button-color: rgb(133, 5, 94);
 }

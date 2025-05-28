@@ -1,0 +1,90 @@
+
+#settings-container {
+    background-color: rgb(241, 234, 224);
+    border: 3px solid #aaaaaa;
+    border-radius: 20px;
+
+    max-width: 40vw;
+    min-width: 400px;
+    height: 50vh;
+    
+    margin: 100px auto;
+    padding-top: 20px;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+#settings-container.dark-mode {
+    background-color: rgb(7, 6, 6);
+
+    border: 2px solid var(--border-color);
+    box-shadow: 1px 1px 1px 1px var(--border-color);
+}
+
+#settings-container section {
+    width: 80%;
+    height: 10%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40%;
+
+    border: 2px solid grey;
+    border-radius: 10px;
+}
+
+#settings-container.dark-mode section {
+    box-shadow: 1px 1px 1px 1px grey;
+}
+
+.saveSettings {
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    bottom: 10px;
+    margin-inline: auto; 
+    height: 28px;
+    min-width: 100px;
+    max-width: 200px;
+
+    background-color: rgb(223, 223, 222);
+    
+    border: 2px solid #cac8c8;
+
+    font-size: 1rem;
+}
+
+#settings-container.dark-mode .saveSettings {
+    background-color: black;
+    border: 2px solid var(--button-color);
+    box-shadow: 1px 1px 1px 1px var(--button-color);
+
+    color: white;
+}
+
+#settings-container.dark-mode .saveSettings:hover {
+    background-color: rgb(54, 52, 52);
+
+}
+
+#settings-container.dark-mode .saveSettings:active {
+    background-color: rgb(143, 143, 143);
+
+}
+
+
+.saveSettings:hover {
+    background-color: rgb(139, 139, 135);
+    border: 2px solid #928e8e;
+}
+
+#settings-container button, #settings-container input {
+     cursor: pointer;
+}
