@@ -37,10 +37,21 @@ main #search-box{
     background-color: rgb(219, 219, 191);
     border: 2px solid rgb(155, 155, 155);
 }
+
+main.dark-mode #search-box button {
+    background-color: rgb(56, 56, 56);
+    border: 2px solid rgb(133, 5, 94);
+    box-shadow: 1px 1px 1px 1px rgb(133, 5, 94);
+}
+
 #search-box img {
     width: 16px;
-    opacity: 50%;
 }
+
+main.dark-mode #search-box img {
+    filter: invert(100%);
+}
+
 
 #search-box input {
     border: 2px solid black;
