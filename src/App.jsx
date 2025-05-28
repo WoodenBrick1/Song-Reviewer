@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import "./styles/App.css"
 import SongReviewer from "./components/SongReviewer";
-import Login from "./components/Login";
+import Register from "./components/Register";
 
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
     return (  
         <>
             {loggedIn ? <SongReviewer setDarkMode={setDarkMode} darkMode={darkMode} username={username}/> :
-             <Login setLoggedIn={setLoggedIn} setDarkMode={setDarkMode} darkMode={darkMode} 
+             <Register setLoggedIn={setLoggedIn} setDarkMode={setDarkMode} darkMode={darkMode} 
              username = {username} setUsername={setUsername} password={password} setPassword={setPassword}/>}
         </>
     );
