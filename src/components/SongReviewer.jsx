@@ -8,13 +8,14 @@ import {useState} from "react"
 import "../styles/SongReviewer.css"
 function SongReviewer(props) {
   const [page, setPage] = useState("Search");
+  const [numOfReviews, setNumOfReviews] = useState(0);
 
   const renderPage = () => {
     switch (page){
       case "Search": 
           return <Search />
       case "Profile":
-          return <Profile username={props.username}/>
+          return <Profile username={props.username} numOfReviews={numOfReviews}/>
       case "Settings":
           return <Settings darkMode = {props.darkMode} setDarkMode={props.setDarkMode} username={props.username} setUsername={props.setUsername}/>
       case "Help":
