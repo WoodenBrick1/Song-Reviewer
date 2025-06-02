@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import searchIcon from "../../assets/search.png";
 import "../../styles/Pages/Search.css";
 
@@ -17,13 +17,15 @@ async function getAccessToken() {
 
 function Search(props) {
     const [albums, setAlbums] = useState([]);
+    const accessTokenRef = useRef(null); 
 
     async function getAlbums(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
         const userAlbum = formData.get('album');
-        const accessToken = await getAccessToken();
-        if (!accessToken) {
+        const token = await getAccessToken();
+        accessTokenRef.current = token; 
+        if (!token) {
             console.error("Failed to retrieve access token");
             return;
         }
@@ -31,13 +33,42 @@ function Search(props) {
             `https://api.spotify.com/v1/search?q=${encodeURIComponent(userAlbum)}&type=album&limit=10`,
             {
                 headers: {
-                    'Authorization': 'Bearer ' + accessToken
+                    'Authorization': 'Bearer ' + token
                 }
             }
         );
         const data = await response.json();
-    
         setAlbums(data.albums?.items || []);
+    }
+
+    async function handleAlbumClick(album) {
+        const token = accessTokenRef.current; 
+        if (!token) {
+            console.error("No access token available");
+            return;
+        }
+        const tracks = await getAlbumTracks(album.id, token);
+        props.setAlbum({
+            name: album.name,
+            artists: album.artists.map(artist => artist.name).join(", "),
+            releaseDate: album.releaseDate,
+            cover: album.images[0]?.url,
+            tracks: tracks
+        });
+        props.setPage("Review");
+    }
+
+    async function getAlbumTracks(albumId, token) {
+        const response = await fetch(
+            `https://api.spotify.com/v1/albums/${albumId}/tracks`,
+            {
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            }
+        );
+        const data = await response.json();
+        return data.items;
     }
 
     return (
@@ -49,22 +80,14 @@ function Search(props) {
             <div className="albums-list">
                 {albums.map(album => (
                     <div key={album.id} className="album-item">
-                        
                         <img src={album.images[0]?.url} alt={album.name} width={100} onClick={() => handleAlbumClick(album)}/>
                         <div className="albumName">{album.name}</div>
                         <div className="artist">{album.artists.map(artist => artist.name).join(", ")}</div>
                     </div>
-        
                 ))}
             </div>
         </>
     );
-
-    function handleAlbumClick(album) {
-        console.log("Selected album:", album);
-        props.setAlbum(album);
-        props.setPage("Review");
-    }
 }
 
 export default Search;
