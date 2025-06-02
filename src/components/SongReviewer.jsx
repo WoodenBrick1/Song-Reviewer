@@ -15,7 +15,7 @@ function SongReviewer(props) {
  const renderPage = () => {
     switch (page){
       case "Search": 
-          return <Search setPage={setPage} setAlbum={setAlbum}/>
+          return <Search setPage={setPage} setAlbum={setAlbum} />
       case "Review":
           return <Review album={album}/>
       case "Profile":

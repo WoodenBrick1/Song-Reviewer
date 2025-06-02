@@ -15,7 +15,7 @@ async function getAccessToken() {
     return data.access_token;
 }
 
-function Search() {
+function Search(props) {
     const [albums, setAlbums] = useState([]);
 
     async function getAlbums(event) {
@@ -50,15 +50,21 @@ function Search() {
                 {albums.map(album => (
                     <div key={album.id} className="album-item">
                         
-                        <img src={album.images[0]?.url} alt={album.name} width={100} />
-                        <div>{album.name}</div>
-                        <div>{album.artists.map(artist => artist.name).join(", ")}</div>
+                        <img src={album.images[0]?.url} alt={album.name} width={100} onClick={() => handleAlbumClick(album)}/>
+                        <div className="albumName">{album.name}</div>
+                        <div className="artist">{album.artists.map(artist => artist.name).join(", ")}</div>
                     </div>
         
                 ))}
             </div>
         </>
     );
+
+    function handleAlbumClick(album) {
+        console.log("Selected album:", album);
+        props.setAlbum(album);
+        props.setPage("Review");
+    }
 }
 
 export default Search;

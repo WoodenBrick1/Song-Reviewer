@@ -61,3 +61,47 @@ main.dark-mode #search-box img {
 
     font-size: 1rem;
 }
+
+/* Albums Styles */
+
+.albums-list {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 90%;
+    min-height: 680px;
+    display: grid;
+
+    grid-template-columns: repeat( auto-fill, minmax(250px, 1fr) );
+    gap: 30px;
+}
+
+.album-item {
+   display: flex;
+   flex-direction: column;
+
+   justify-content: space-between;
+   align-items: center;
+}
+.album-item img {
+    width: 100%;
+    cursor: pointer;
+    border: 4px solid black;
+}
+
+.albumName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.artist {
+    font-size: 0.8rem;
+    color: gray;
+}
+
+main.dark-mode .album-item img {
+    border: 3px solid #800852;
+    box-shadow: 2px 2px 2px 2px #800852;
+}
