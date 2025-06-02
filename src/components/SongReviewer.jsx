@@ -1,4 +1,5 @@
 import Search from "./Pages/search"
+import Review from "./Pages/Review"
 import Profile from "./Pages/Profile"
 import Settings from "./Pages/Settings"
 import Help from "./Pages/Help"
@@ -9,11 +10,14 @@ import "../styles/SongReviewer.css"
 function SongReviewer(props) {
   const [page, setPage] = useState("Search");
   const [numOfReviews, setNumOfReviews] = useState(0);
+  const [album, setAlbum] = useState({});
 
-  const renderPage = () => {
+ const renderPage = () => {
     switch (page){
       case "Search": 
-          return <Search />
+          return <Search setPage={setPage} setAlbum={setAlbum}/>
+      case "Review":
+          return <Review album={album}/>
       case "Profile":
           return <Profile username={props.username} numOfReviews={numOfReviews}/>
       case "Settings":

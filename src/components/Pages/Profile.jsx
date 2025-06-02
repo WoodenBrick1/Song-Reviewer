@@ -10,7 +10,7 @@ function Profile (props) {
         
         <section className="numReviews">
             <p>Number of reviews:</p>
-            <p class="numDisplay">{props.numOfReviews}</p>
+            <p className="numDisplay">{props.numOfReviews}</p>
         </section>
 
         <section className="latest">

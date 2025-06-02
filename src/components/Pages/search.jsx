@@ -1,10 +1,18 @@
 import searchIcon from "../../assets/search.png"
 import "../../styles/Pages/Search.css"
+
+async function getAlbums(event) {
+
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    const userAlbum = formData.get('album')
+}
 function Search() {
-    return (<div id="search-box">
-                <input className="search" />
+    return (<form id="search-box" onSubmit={getAlbums}>
+                <input className="search" name="album"/>
                 <button><img src={searchIcon} alt="search"></img></button>
-            </div>)
+            </form>)
 }
 
 export default Search;
