@@ -1,0 +1,142 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#review-page {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+    height: 88vh;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.albumInfo {
+    grid-column: 1 / 2;
+
+    justify-self: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    min-width: 500px;
+    min-height: 450px;
+
+    margin-top: 50px;
+
+}
+
+main.dark-mode .albumInfo img{
+    border: 3px solid var(--border-color);
+}
+
+.releaseDate {
+    font-size: 1.4rem;
+}
+
+.albumInfo h1 {
+    font-size: 2.3rem;
+}
+
+.albumInfo h2 {
+    color: grey;
+}
+.albumInfo img {
+    width: 300px;
+}
+
+.review {
+    
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding-top: 60px;
+}
+
+.track {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 30px;
+
+    min-width: 100px;
+    max-width: 500px;
+    height: 30px;
+
+    background-color: rgb(241, 233, 221);
+    border: 2px solid rgb(209, 202, 190);
+
+    max-height: 70vh; 
+    overflow-y: auto;    
+    align-items: stretch; 
+}
+
+.track label {
+    display: block;
+    width: 100%;
+    font-size: clamp(0.7rem, 2vw, 1.1rem); 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+main.dark-mode .track {
+    background-color: rgb(24, 22, 19);
+    border: 2px solid rgb(68, 54, 29);
+    box-shadow: 2px 2px 2px 2px rgb(68, 54, 29);
+}
+
+.track input {
+    height: 90%;
+    width: 40px;
+
+    font-size: 1rem;
+
+    text-align: center;
+}
+
+main.dark-mode .track input {
+    background-color: rgb(36, 32, 32);
+    color: white;
+    border: 1px solid var(--button-color)
+
+}
+
+.save {
+    margin-top: 40px;
+    height: 30px;
+    width: 180px;
+
+    background-color: rgb(64, 133, 64);
+    border: 2px solid rgb(5, 56, 8);
+    border-radius: 10px;
+
+    font-size: 1.4rem;
+    color: white;
+
+    cursor: pointer;
+}
+
+main.dark-mode .save {
+    box-shadow: 1px 3px 1px 1px rgb(5, 56, 8);
+    
+}
+.save:hover {
+    background-color: rgb(21, 61, 21);
+    border: 2px solid rgb(2, 12, 3);
+}   
+
+
+main.dark-mode .save:hover {
+  border: none;
+    
+}

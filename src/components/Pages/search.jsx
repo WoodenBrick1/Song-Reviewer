@@ -51,10 +51,12 @@ function Search(props) {
         props.setAlbum({
             name: album.name,
             artists: album.artists.map(artist => artist.name).join(", "),
-            releaseDate: album.releaseDate,
+            releaseDate: album.release_date,
             cover: album.images[0]?.url,
             tracks: tracks
         });
+
+        props.setReviewInProgress(true);
         props.setPage("Review");
     }
 

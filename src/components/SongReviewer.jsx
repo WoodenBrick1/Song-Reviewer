@@ -11,13 +11,14 @@ function SongReviewer(props) {
   const [page, setPage] = useState("Search");
   const [numOfReviews, setNumOfReviews] = useState(0);
   const [album, setAlbum] = useState({});
+  const [reviewInProgress, setReviewInProgress] = useState(false);
 
  const renderPage = () => {
     switch (page){
       case "Search": 
-          return <Search setPage={setPage} setAlbum={setAlbum} />
+          return <Search setPage={setPage} setAlbum={setAlbum} setReviewInProgress={setReviewInProgress}/>
       case "Review":
-          return <Review album={album}/>
+          return <Review album={album} setPage={setPage} setReviewInProgress={setReviewInProgress}/>
       case "Profile":
           return <Profile username={props.username} numOfReviews={numOfReviews}/>
       case "Settings":
@@ -34,7 +35,7 @@ function SongReviewer(props) {
   }
     return (
         <>
-        <TopBar setDarkMode={props.setDarkMode} darkMode={props.darkMode} setPage={setPage}/>
+        <TopBar setDarkMode={props.setDarkMode} darkMode={props.darkMode} setPage={setPage} reviewInProgress={reviewInProgress}/>
         <main className ={`${props.darkMode ? "dark-mode" : ""}`}>
           {renderPage()}
         </main>
