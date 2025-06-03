@@ -35,7 +35,7 @@ function SongReviewer(props) {
       case "Settings":
           return <Settings darkMode = {props.darkMode} setDarkMode={props.setDarkMode} username={props.username} setUsername={props.setUsername}/>
       case "History":
-          return <History albums={albums} setAlbum={setAlbum} setPage={setPage}/>
+          return <History albums={albums} setAlbum={setAlbum} setPage={setPage} setAlbums={setAlbums}/>
       case "About":
           return <About />
       case "Logout":

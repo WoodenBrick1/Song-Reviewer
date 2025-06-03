@@ -37,3 +37,42 @@ main.dark-mode .history-item img {
     border: 3px solid #800852;
     box-shadow: 2px 2px 2px 2px #800852;
 }
+
+.export, .import {
+    width: 150px;
+    height: 50px;
+    position: fixed;
+
+    bottom: 5%;
+    right: 5px;
+
+    background-color: beige;
+    border: 2px solid rgb(201, 202, 129);
+    border-radius: 10px;
+    
+    font-size: 1rem;
+
+    cursor: pointer;
+}
+
+.export:hover, .import:hover {
+    background-color: rgb(207, 207, 177);
+    color: black;
+}
+.import {
+    right: 170px;
+}
+
+main.dark-mode .export, main.dark-mode .import {
+    background-color: rgb(24, 22, 19);
+    border: 2px solid var(--button-color);
+        box-shadow: 1px 1px 1px 1px var(--button-color);
+    color: white;
+}
+
+main.dark-mode .export:hover, main.dark-mode .import:hover {
+    background-color: rgb(56, 55, 55);
+    border: 2px solid var(--button-color);
+    box-shadow: 1px 1px 1px 1px var(--button-color);
+    color: white;
+}
