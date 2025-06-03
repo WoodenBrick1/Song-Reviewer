@@ -8,9 +8,10 @@ function TopBar(props) {
         <div className={`menu ${props.darkMode ? "dark-mode" : ""}`}>
             <button onClick={() => {props.setPage(props.reviewInProgress ? "Review" : "Search")}}>Search</button>
             <button onClick={() => {props.setPage("Profile")}}>Profile</button>
+            <button onClick={() => {props.setPage("History")}}>History</button>
             <button onClick={() => {props.setPage("Settings")}}>Settings</button>
-            <button onClick={() => {props.setPage("Help")}}>Help</button>
-            <button onClick={() => {props.setPage("About")}}>About</button>            <button onClick={() => {props.setPage("Logout")}}>Logout</button>
+            <button onClick={() => {props.setPage("About")}}>About</button>            
+            <button onClick={() => {props.setPage("Logout")}}>Logout</button>
         </div>
     </header>
     )

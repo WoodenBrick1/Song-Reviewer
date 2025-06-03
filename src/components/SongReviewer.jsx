@@ -2,7 +2,7 @@ import Search from "./Pages/search"
 import Review from "./Pages/Review"
 import Profile from "./Pages/Profile"
 import Settings from "./Pages/Settings"
-import Help from "./Pages/Help"
+import History from "./Pages/History"
 import About from "./Pages/About"
 import TopBar from "./topBar"
 import {useState} from "react"
@@ -34,8 +34,8 @@ function SongReviewer(props) {
           return <Profile username={props.username} numOfReviews={numOfReviews}/>
       case "Settings":
           return <Settings darkMode = {props.darkMode} setDarkMode={props.setDarkMode} username={props.username} setUsername={props.setUsername}/>
-      case "Help":
-          return <Help />
+      case "History":
+          return <History albums={albums} setAlbum={setAlbum} setPage={setPage}/>
       case "About":
           return <About />
       case "Logout":
