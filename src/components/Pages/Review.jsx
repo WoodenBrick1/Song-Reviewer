@@ -1,9 +1,41 @@
 import "../../styles/Pages/Review.css"
 
-function Review ({album, setPage, setReviewInProgress}){
+function Review ({album, setPage, setReviewInProgress, setNumOfReviews, setAlbums}) {
 
-    function handleClick() {
+    function handleSave(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const ratings = {};
+        album.tracks.forEach(track => {
+            const rating = formData.get(track.name);
+            if (rating) {
+                ratings[track.name] = parseFloat(rating, 10);
+            }
+        });
+        const overallRating = formData.get("Overall");
+        if (overallRating) {
+            ratings["Overall"] = parseFloat(overallRating, 10);
+        }
+
+        const newAlbum = {
+            name: album.name,
+            artists: album.artists,
+            cover: album.cover,
+            releaseDate: album.releaseDate,
+            tracks: album.tracks.map(track => ({
+                name: track.name,
+                rating: ratings[track.name] || "N/A"
+            })),
+            overallRating: ratings["Overall"] || "N/A"
+        };
+
+        const savedReviews = JSON.parse(localStorage.getItem("albumReviews") || "[]");
+        savedReviews.push(newAlbum);
+        localStorage.setItem("albumReviews", JSON.stringify(savedReviews));
+
+        setAlbums(prev => [...prev, newAlbum]);
         setPage("Search")
+        setNumOfReviews(prev => prev + 1);
         setReviewInProgress(false);
     }
     return (
@@ -15,12 +47,12 @@ function Review ({album, setPage, setReviewInProgress}){
             <p className="releaseDate">Released: {album.releaseDate}</p>
         </section>
   
-        <section className="review">
+        <form className="review" onSubmit={handleSave}>
             <h2>Tracks:</h2>
             {album.tracks.map(track => {
-                return <section className="track">
+                return <section className="track" key={track.name}>
                         <label>{track.name}</label>
-                        <input type="number" min="0" max="10"></input>
+                        <input type="number" min="0" max="10" name={track.name} step="0.1"></input>
                     </section>
             })}
 
@@ -28,8 +60,8 @@ function Review ({album, setPage, setReviewInProgress}){
                 <label>Overall</label>
                 <input type="number" min="0" max="10"></input>
             </section>
-        <button className="save" onClick={handleClick}>Save</button>
-        </section>
+        <button className="save">Save</button>
+        </form>
 
     </div>
 

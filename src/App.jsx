@@ -5,6 +5,8 @@ import Register from "./components/Register";
 
 
 function App() {
+    
+    const database = false;
     const [loggedIn, setLoggedIn] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
 
@@ -20,9 +22,9 @@ function App() {
       
     return (  
         <>
-            {loggedIn ? <SongReviewer setDarkMode={setDarkMode} darkMode={darkMode} setUsername={setUsername} username={username} setLoggedIn={setLoggedIn}/> :
+            {loggedIn ? <SongReviewer setDarkMode={setDarkMode} darkMode={darkMode} setUsername={setUsername} username={username} setLoggedIn={setLoggedIn} database={database}/> :
              <Register setLoggedIn={setLoggedIn} setDarkMode={setDarkMode} darkMode={darkMode} 
-             username = {username} setUsername={setUsername} setEmail={setEmail}/>}
+             username = {username} setUsername={setUsername} setEmail={setEmail} database={database}/>}
         </>
     );
 }

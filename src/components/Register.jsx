@@ -6,12 +6,7 @@ import "../styles/login.css";
 
 import {useState} from "react";
 
-const database = false;
-
-
 function Register(props) {
-    
-    
     const [errorMessage, setErrorMessage] = useState("");
     const checkRegister = async (event) => {
         event.preventDefault(); 
@@ -20,7 +15,7 @@ function Register(props) {
         const email = formData.get("email");
         const password = formData.get('password');
 
-        if (database) {
+        if (props.database) {
             const emailRegex = /.+@.+\..+/;
             if (name == "") {
                 setErrorMessage("Input a Name");

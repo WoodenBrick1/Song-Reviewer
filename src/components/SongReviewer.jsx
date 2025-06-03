@@ -6,19 +6,30 @@ import Help from "./Pages/Help"
 import About from "./Pages/About"
 import TopBar from "./topBar"
 import {useState} from "react"
+import { useEffect } from "react";
 import "../styles/SongReviewer.css"
 function SongReviewer(props) {
   const [page, setPage] = useState("Search");
   const [numOfReviews, setNumOfReviews] = useState(0);
   const [album, setAlbum] = useState({});
+  const [albums, setAlbums] = useState([]);
   const [reviewInProgress, setReviewInProgress] = useState(false);
 
+  if (props.database) {
+    ;
+  } else {
+  useEffect(() => {
+    const savedReviews = JSON.parse(localStorage.getItem("albumReviews") || "[]");
+    setAlbums(savedReviews);
+    setNumOfReviews(savedReviews.length);
+  }, []);
+  }
  const renderPage = () => {
     switch (page){
       case "Search": 
           return <Search setPage={setPage} setAlbum={setAlbum} setReviewInProgress={setReviewInProgress}/>
       case "Review":
-          return <Review album={album} setPage={setPage} setReviewInProgress={setReviewInProgress}/>
+          return <Review album={album} setPage={setPage} setReviewInProgress={setReviewInProgress} setAlbums={setAlbums} setNumOfReviews={setNumOfReviews}/>
       case "Profile":
           return <Profile username={props.username} numOfReviews={numOfReviews}/>
       case "Settings":
