@@ -3,11 +3,13 @@ import searchIcon from "../../assets/search.png";
 import "../../styles/Pages/Search.css";
 
 async function getAccessToken() {
+const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
+const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
     const response = await fetch('https://accounts.spotify.com/api/token', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': 'Basic ' + btoa("0dd2128f049a4d4d99ac841da4f81991" + ':' + "71789c822a0b4982a464882dc1bb46da")
+            'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
         },
         body: 'grant_type=client_credentials'
     });

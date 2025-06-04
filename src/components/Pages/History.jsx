@@ -1,9 +1,11 @@
 import "../../styles/Pages/History.css";
-import React, { useRef } from "react";
+import { useRef, useState } from "react";
 
 
 function History({albums, setPage, setAlbum, setAlbums}) {
     const fileInputRef = useRef(null)
+    const [searchAlbum, setSearchAlbum] = useState("");
+
     function handleClick(album) {
     setAlbum(album);
     setPage("Review");
@@ -47,9 +49,19 @@ function History({albums, setPage, setAlbum, setAlbums}) {
         fileInputRef.current.click();
     }
 
+    function handleSearch(event) {
+        setSearchAlbum(event.target.value);
+    }
     return (<div id={"history-container"}>
             <button className="import" onClick={triggerFileInput}>Import Reviews</button>
             <button onClick={handleDownload} className="export">Export Reviews</button>
+
+           
+            <label htmlFor="album" className="search">Search Album:
+                <input name="album" onChange={handleSearch}/>
+            </label>
+           
+
             <input
                 type="file"
                 accept=".txt,application/json"
@@ -57,8 +69,12 @@ function History({albums, setPage, setAlbum, setAlbums}) {
                 ref={fileInputRef}
                 onChange={handleImport}
             />
+            <div className="history-items">
             {albums.length > 0 ? (
-                albums.map((album, index) => (
+                albums.filter(album => {
+                    if (!searchAlbum) return true; 
+                    const regex = new RegExp(searchAlbum, "i");
+                    return regex.test(album.name)}).slice().reverse().map((album, index) => (
                     <div key={index} className="history-item">
                         <h2>{album.name}</h2>
                         <img src={album.cover} alt={album.name} width={100} onClick={() => {handleClick(album)}}/>
@@ -68,6 +84,7 @@ function History({albums, setPage, setAlbum, setAlbums}) {
             ) : (
                 <p>No reviews found.</p>
             )}
+            </div>
     </div>)
 }
 

@@ -10,4 +10,9 @@
 
     --border-color: rgb(252, 237, 106);
     --button-color: rgb(133, 5, 94);
+    --top-bar-height: 10vh;
+}
+
+body {
+    overflow-x: hidden;
 }

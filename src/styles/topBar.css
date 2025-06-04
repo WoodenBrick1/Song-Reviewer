@@ -4,7 +4,7 @@
 }
 header {
     width: 100vw;
-    height: 10vh;
+    height: var(--top-bar-height);
     position: relative;
 
     background-color: rgb(238, 223, 204);
