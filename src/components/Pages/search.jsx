@@ -49,14 +49,22 @@ function Search(props) {
             console.error("No access token available");
             return;
         }
+
+        const existingAlbum = props.userAlbums.find(a => a.name === album.name);
+        let albumData;
+
+        if (existingAlbum) {
+            albumData = existingAlbum;
+        } else {
         const tracks = await getAlbumTracks(album.id, token);
-        props.setAlbum({
+        albumData = {
             name: album.name,
             artists: album.artists.map(artist => artist.name).join(", "),
             releaseDate: album.release_date,
             cover: album.images[0]?.url,
             tracks: tracks
-        });
+        }};
+        props.setAlbum(albumData);
 
         props.setReviewInProgress(true);
         props.setPage("Review");

@@ -11,13 +11,15 @@ main #search-box{
     cursor: pointer;
 
     width: 40px;
-    height: 33px;
+    height: 34px;
 
     margin-left: 10px; 
 
     background-color: beige;
     border: 2px solid rgb(78, 78, 78);
     border-radius: 10px;
+    
+
 }
 
 #search-box button:hover {
