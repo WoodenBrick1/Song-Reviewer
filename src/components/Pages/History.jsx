@@ -1,10 +1,13 @@
-import "../../styles/Pages/History.css";
+
 import { useRef, useState } from "react";
+import Dropdown from 'react-bootstrap/Dropdown';
+import "../../styles/Pages/History.css";
 
 
 function History({albums, setPage, setAlbum, setAlbums}) {
     const fileInputRef = useRef(null)
     const [searchAlbum, setSearchAlbum] = useState("");
+    const [sortOption, setSortOption] = useState("Date (Newest to Oldest)");
 
     function handleClick(album) {
     setAlbum(album);
@@ -52,7 +55,10 @@ function History({albums, setPage, setAlbum, setAlbums}) {
     function handleSearch(event) {
         setSearchAlbum(event.target.value);
     }
+
+ 
     return (<div id={"history-container"}>
+            <DropdownElement sortOption={sortOption} setSortOption={setSortOption}/>
             <button className="import" onClick={triggerFileInput}>Import Reviews</button>
             <button onClick={handleDownload} className="export">Export Reviews</button>
 
@@ -71,10 +77,10 @@ function History({albums, setPage, setAlbum, setAlbums}) {
             />
             <div className="history-items">
             {albums.length > 0 ? (
-                albums.filter(album => {
+                sortAlbums(albums, sortOption).filter(album => {
                     if (!searchAlbum) return true; 
                     const regex = new RegExp(searchAlbum, "i");
-                    return regex.test(album.name)}).slice().reverse().map((album, index) => (
+                    return regex.test(album.name)}).slice().map((album, index) => (
                     <div key={index} className="history-item">
                         <h2 className="historyName">{album.name}</h2>
                         <img src={album.cover} alt={album.name} width={100} onClick={() => {handleClick(album)}}/>
@@ -86,6 +92,45 @@ function History({albums, setPage, setAlbum, setAlbums}) {
             )}
             </div>
     </div>)
+}
+
+function sortAlbums(albums, option) {
+        switch (option) {
+            case "Date (Oldest to Newest)":
+                return albums;
+            case "Date (Newest to Oldest)":
+                return albums.slice().reverse();
+            case "Best to Worst":
+                return albums.slice().sort((a, b) => b.overallRating - a.overallRating);
+            case "Worst to Best":
+                return albums.slice().sort((a, b) => a.overallRating - b.overallRating);
+            default:
+                return albums;
+
+        }
+    }
+
+function DropdownElement ({ sortOption, setSortOption }) {
+    return (
+     <Dropdown className="dropdown">
+            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                {sortOption}
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+                <Dropdown.Item onClick={() => setSortOption("Date (Oldest to Newest)")}>
+                    Date (Oldest to Newest)
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setSortOption("Date (Newest to Oldest)")}>
+                    Date (Newest to Oldest)
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setSortOption("Best to Worst")}>
+                    Best to Worst
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setSortOption("Worst to Best")}>
+                    Worst to Best
+                </Dropdown.Item>
+            </Dropdown.Menu>
+        </Dropdown>)
 }
 
 export default History;

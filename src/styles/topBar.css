@@ -13,7 +13,7 @@ header {
 }
 header h1 {
     text-align: center;
-    font-size: 2.7rem;
+    font-size: 3rem;
 
     padding-top: 10px;
 }
@@ -41,6 +41,8 @@ header.dark-mode {
     border: 2px solid #aaaaaa;
 
     z-index: 3;
+
+    font-size: 0.9rem;
 }
 
 .menu button:hover {

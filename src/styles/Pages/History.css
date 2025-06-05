@@ -98,3 +98,14 @@ main.dark-mode .export:hover, main.dark-mode .import:hover {
     box-shadow: 1px 1px 1px 1px var(--button-color);
     color: white;
 }
+
+.dropdown {
+    position: relative;
+    left: auto;
+    right: 10px;
+    top: 5vh;
+    margin-left: auto;
+    margin-right: 30px;
+    float: right;
+
+}
