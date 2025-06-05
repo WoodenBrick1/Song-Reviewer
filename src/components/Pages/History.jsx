@@ -57,7 +57,7 @@ function History({albums, setPage, setAlbum, setAlbums}) {
             <button onClick={handleDownload} className="export">Export Reviews</button>
 
            
-            <label htmlFor="album" className="search">Search Album:
+            <label className="search">Search Album:
                 <input name="album" onChange={handleSearch}/>
             </label>
            
@@ -76,7 +76,7 @@ function History({albums, setPage, setAlbum, setAlbums}) {
                     const regex = new RegExp(searchAlbum, "i");
                     return regex.test(album.name)}).slice().reverse().map((album, index) => (
                     <div key={index} className="history-item">
-                        <h2>{album.name}</h2>
+                        <h2 className="historyName">{album.name}</h2>
                         <img src={album.cover} alt={album.name} width={100} onClick={() => {handleClick(album)}}/>
                         <p>Overall Rating: {album.overallRating}</p>
                     </div>

@@ -63,8 +63,13 @@ function Search(props) {
     }
 
     async function getAlbumTracks(albumId, token) {
+    let allTracks = [];
+    let offset = 0;
+    const limit = 50; 
+
+    while (true) {
         const response = await fetch(
-            `https://api.spotify.com/v1/albums/${albumId}/tracks`,
+            `https://api.spotify.com/v1/albums/${albumId}/tracks?limit=${limit}&offset=${offset}`,
             {
                 headers: {
                     'Authorization': 'Bearer ' + token
@@ -72,7 +77,13 @@ function Search(props) {
             }
         );
         const data = await response.json();
-        return data.items;
+        allTracks = allTracks.concat(data.items);
+
+        if (!data.next) break; 
+        offset += limit;
+    }
+
+    return allTracks;
     }
 
     return (
